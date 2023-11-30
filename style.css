@@ -5,15 +5,15 @@ padding: 0;
 
 #root{
     
-    width: 50vw;
-    height: 50vh;
-    border: 4px solid yellowgreen;
+    width: 100vw;
+    height: 85vh;
     overflow: scroll;
-    margin-top: 100px;
+    margin-top: 30px;
     position: relative;
 }
 
 #header{
+    width: fit-content;
     display: flex;
     position: sticky;
     top: 0;
@@ -22,62 +22,63 @@ padding: 0;
 }
 
 .head-cell:first-child{
-    background-color: #F8f9FA;
+    background-color: red;
+    position: sticky;
+    top: 0;
+    left: 0;
     min-width: 40px !important;
+    padding: 0 .1px;
 }
 
 .head-cell{
     height: 30px;
     min-width: 100px;
-    border: 1px solid #C4C7C5;
+    border: .1px solid #C4C7C5;
     border-top-width: 2px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 
-
 }
 
 #body{
-  
     display: grid;
-    grid-template-columns: 41px auto;
+    grid-template-columns: 40px auto;
 }
 
 #sno{
- 
     position: sticky;
     left: 0;
     z-index: 100;
     background-color: #fff;
-    background-color: 120;
-    
+    background-color: 120; 
 }
 
 .sno-cell{
     height: 30px;
+    min-width: 40px;
     background-color: #F8f9FA;
-    border: 1px solid #C4C7C5; 
+    border: .1px solid gray; 
     display: flex;
     justify-content: center;
     align-items: center; 
 }
 
-#cells-container{
-    /* background-color: dodgerblue; */
+
+.row {
+    display: flex; 
 }
 
-
-.plate{
-    width: 40px;
+.cell {
+    border: .1px solid #C4C7C5;
+    min-width: 100px;
     height: 30px;
-    background-color: red;
-    border: 1px solid #C4C7C5;
-    border-top-width: 2px;
-    position:sticky;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-
 }
+
+.cell:focus{
+    outline:2px solid #1B72E8;
+}
+
+
+
