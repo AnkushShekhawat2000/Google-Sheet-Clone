@@ -1,15 +1,66 @@
 *{
 margin: 0;
+padding: 0;
+box-sizing: border-box;
 font-family: poppins-regular;
+
+}
+
+body{
+   
+    overflow: hidden;
 }
 
 #root{
     
     width: 100vw;
     height: 75vh;
-    overflow: scroll;
+    overflow-x: auto;
     margin-top: 30px;
     position: relative;
+}
+.header-part{
+   display: flex; 
+   flex-direction: column;
+   background-color: #ecf0f1;
+   gap:20px;
+ 
+  
+}
+
+.nav-menu{
+    display: flex;
+    height: 3rem;
+    background-color: #218c74;
+    position: sticky;
+    top: 0;
+    padding-left: 1rem;
+    align-items: flex-end;
+   
+}
+
+.menu-item{
+    width: 3.5rem;
+    height: 2rem;
+    color:#f1f2f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.menu-item:hover{
+    background-color: #83d088a8;
+    border-radius: 4px;
+    color: #218c74;
+}
+
+.active{
+    background-color: white;
+    color: #218c74;
+    border-top-left-radius: 4px ;
+    border-top-right-radius: 4px;
 }
 
 #header{
@@ -26,9 +77,9 @@ font-family: poppins-regular;
     position: sticky;
     top: 0;
     left: 0;
-    min-width: 38.1px !important;
-    padding: 0 .1px;
-    background-color: #fff;
+    min-width: 40px !important;
+    padding: 0 .5px;
+    background-color: grey;
 }
 
 .head-cell{
@@ -54,8 +105,6 @@ font-family: poppins-regular;
     left: 0;
     z-index: 100;
     background-color: #fff;
-   
-   
 }
 
 .sno-cell{
@@ -84,9 +133,30 @@ font-family: poppins-regular;
     outline:2px solid #1B72E8;
 }
 
-
-#export{
-    cursor: pointer;
+.import-export{
     font-size: 32px !important;
+}
+.import-export:hover{
+    background-color:#d2d2d2 ;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.footer{
+    display: flex;
+    gap:30px;
+    background-color: rgb(224, 223, 223);
+    padding: 10px;
+    /* margin-inline-start: 20px; */
+    overflow-x: auto;
     
-  }
+}
+
+.acive-Sheet:hover{
+    cursor: pointer;
+    background-color: rgb(138, 137, 136);
+}
+
+.formulae-icon{
+    width: 1.2rem;
+}
