@@ -1,12 +1,13 @@
 *{
 margin: 0;
 padding: 0;
+font-family: poppins-regular;
 }
 
 #root{
     
     width: 100vw;
-    height: 85vh;
+    height: 75vh;
     overflow: scroll;
     margin-top: 30px;
     position: relative;
@@ -26,13 +27,13 @@ padding: 0;
     position: sticky;
     top: 0;
     left: 0;
-    min-width: 40px !important;
+    min-width: 38.1px !important;
     padding: 0 .1px;
 }
 
 .head-cell{
-    height: 30px;
-    min-width: 100px;
+    height: 20px;
+    min-width: 200px;
     border: .1px solid #C4C7C5;
     border-top-width: 2px;
     text-align: center;
@@ -53,11 +54,13 @@ padding: 0;
     z-index: 100;
     background-color: #fff;
     background-color: 120; 
+   
 }
 
 .sno-cell{
-    height: 30px;
-    min-width: 40px;
+    height: 20px;
+    min-width: 30px;
+    font-size: 14px;
     background-color: #F8f9FA;
     border: .1px solid gray; 
     display: flex;
@@ -72,8 +75,8 @@ padding: 0;
 
 .cell {
     border: .1px solid #C4C7C5;
-    min-width: 100px;
-    height: 30px;
+    min-width: 200px;
+    height: 25px;
 }
 
 .cell:focus{
@@ -81,4 +84,8 @@ padding: 0;
 }
 
 
-
+#export{
+    cursor: pointer;
+    font-size: 32px !important;
+    
+  }

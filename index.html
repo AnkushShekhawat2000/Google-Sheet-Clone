@@ -6,16 +6,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="./options.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
      <div id="options">
         <form class="form">
             <select class="input" name="fontFamily" class="input">
-              <option value="A">Monkoi</option>
-              <option value="B">Sans Pro</option>
-              <option value="C">Arial</option>
+              <option value="poppins-extra-bold">Extra-bold</option>
+              <option value="poopins-medium">Medium</option>
+              <option value="poppins-regular" >Regular</option>
             </select>
             <input class="input" type="number" name="fontSize" min="8" max="32" value="16"></input>
           
@@ -35,7 +34,7 @@
           </div>
         
           <div>
-            <input type="radio" name="align" value="left" id="left"/>
+            <input type="radio" name="align" value="left" id="left" checked/>
             <label for="left" class="material-icons">format_align_left</label>
            
             <input type="radio" name="align" value="center" id="center"/>
@@ -51,16 +50,18 @@
              <input type="color" name="textColor" id="textColor"/>
              <label for="textColor" class="material-icons">format_color_text</label>
           </div>
+      
           <div>
-             <input type="color" name="textColor" id="bgColor"/>
+             <input type="color" value="#ffffff" name="bgColor" id="bgColor"/>
              <label for="bgColor" class="material-icons">format_color_fill</label>
           </div>
 
+          <span onclick="exportData()" id="export" class="material-icons">cloud_upload</span>
           </form>
 
      </div>
      <div id="cell-state">
-        <div>C4</div>
+        <div id="active-cell">null</div>
         <input type="text" placeholder="f ( x )"/>
      </div>
      <div id="root">
@@ -82,7 +83,8 @@
   
     
     
-
+     <script src="functionality.js"></script>
     <script src="index.js"></script>
+   
 </body>
 </html>

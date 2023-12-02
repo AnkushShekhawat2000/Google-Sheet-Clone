@@ -1,4 +1,6 @@
 
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap'); */
+
 .form{
     display:flex;
     padding: 30px;
@@ -37,10 +39,10 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 4px;
+
   }
 
   #cell-state{
-    border: 2px solid red;
     display: flex;
     gap: 20px;
     padding: 10px 100px;
@@ -56,11 +58,26 @@
   #cell-state input{
     flex-grow: 1;
     padding: 10px;
+    border-radius: 4px;
   }
 
   #cell-state:focus{
     outline:none;
   }
   
+  @font-face {
+    font-family: poppins-extra-bold;
+    src: url(./fonts/Poppins-ExtraBoldItalic.ttf);
+}
 
- 
+@font-face {
+    font-family: poppins-medium;
+    src: url(./fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: poppins-regular;
+    src: url(./fonts/Poppins-Regular.ttf);
+}
+
+
