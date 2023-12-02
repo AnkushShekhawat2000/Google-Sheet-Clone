@@ -1,6 +1,5 @@
 *{
 margin: 0;
-padding: 0;
 font-family: poppins-regular;
 }
 
@@ -23,12 +22,13 @@ font-family: poppins-regular;
 }
 
 .head-cell:first-child{
-    background-color: red;
+    z-index: 1000;
     position: sticky;
     top: 0;
     left: 0;
     min-width: 38.1px !important;
     padding: 0 .1px;
+    background-color: #fff;
 }
 
 .head-cell{
@@ -45,6 +45,7 @@ font-family: poppins-regular;
 
 #body{
     display: grid;
+    width: fit-content;
     grid-template-columns: 40px auto;
 }
 
@@ -53,12 +54,12 @@ font-family: poppins-regular;
     left: 0;
     z-index: 100;
     background-color: #fff;
-    background-color: 120; 
+   
    
 }
 
 .sno-cell{
-    height: 20px;
+    height: 25px;
     min-width: 30px;
     font-size: 14px;
     background-color: #F8f9FA;

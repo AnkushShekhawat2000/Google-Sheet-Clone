@@ -58,10 +58,10 @@
   #cell-state input{
     flex-grow: 1;
     padding: 10px;
-    border-radius: 4px;
+    
   }
 
-  #cell-state:focus{
+  #cell-state input:focus{
     outline:none;
   }
   
@@ -79,5 +79,3 @@
     font-family: poppins-regular;
     src: url(./fonts/Poppins-Regular.ttf);
 }
-
-
