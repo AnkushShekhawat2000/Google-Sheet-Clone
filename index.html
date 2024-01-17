@@ -83,6 +83,17 @@
         <div>
           <button id="merge">Merge</button>
         </div>
+        <div>
+          <button id="zoom-in">Zoom In</button>
+          <button id="zoom-out">Zoom out</button>
+        </div>
+
+        <div class="search-replace">
+          <input type="text" id="searchInput" placeholder="Search">
+          <input type="text" id="replaceInput" placeholder="Replace">
+          <button id="fnrBtn">Submit</button>
+      </div>
+  
 
         </form>
 
@@ -93,7 +104,7 @@
     <input type="text" class="formulae-bar"/>
    </div>
  <div id="root">
-   
+  <div class="root-zoom">
     <div id="header">
         <div class="head-cell first"></div>  
     </div>
@@ -101,11 +112,11 @@
         <div id="sno">
           
         </div>
-        <div id="body-container">
+        <div id="body-container" class="root-zoom" >
 
         </div>
     </div>
-  
+  </div>
    
  
    
@@ -126,6 +137,7 @@
     
      <script src="functionality.js"></script>
     <script src="index.js"></script>
+    
    
 </body>
 </html>

@@ -1,20 +1,12 @@
 let activeCellId = null;
 const activeCellElement =document.getElementById("active-cell");
 const form = document.querySelector(".form");
-// const mergeButton = document.getElementById('merge');
+
 const state ={};
 
 
-
-//chat gpt
-// Assuming you have a merge button with id 'mergeButton'
-const mergeButton = document.getElementById('merge');
-
-// Placeholder for a variable to store selected cells
-let selectedCells = [];
-
-// Placeholder for defaultStyles
-const defaultStyles = {
+const defaultStyles ={
+    //Todo: change it later
     fontFamily: "poppins-regular",
     fontSize: 16,
     isBold: false,
@@ -24,163 +16,128 @@ const defaultStyles = {
     textColor: "#00000",
     bgColor: "#ffffff",
     text: ""
-};
+}
+
+
+////////////////////////////////////////////////////////////
+
+
+// cell zoom and zoom out
+
+const zoomingTarget = document.querySelector('.root-zoom'); // Updated selector
+const zoomInTool = document.getElementById('zoom-in');
+const zoomOutTool = document.getElementById('zoom-out');
+
+
+var zoomIndex = 1;
+
+function zoomInFun(e) {
+    zoomIndex += 0.005;
+    zoomingTarget.style.transform = `scale(${zoomIndex})`;
+    e.preventDefault();
+}
+
+function zoomOutFn(e){
+   if(zoomIndex > 1)
+   {
+    zoomIndex -= 0.005;
+    zoomingTarget.style.transform = `scale(${zoomIndex})`;
+   
+   }
+   e.preventDefault();
+    
+} 
+
+zoomOutTool.addEventListener("click",zoomOutFn)
+zoomInTool.addEventListener("click",zoomInFun)
 
 
 
 
-// Event listener for merge button click
+
+// search and replace
+
+{/* <div class="search-replace">
+<input type="text" id="searchInput" placeholder="Search">
+<input type="text" id="replaceInput" placeholder="Replace">
+<button id="fnrBtn">Submit</button>
+</div> */}
+
+
+    const fnrBtn = document.getElementById("fnrBtn");
+    
+   
+
+    function searchAndReplace(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+      // value only get when user clicked on submit
+        const searchInput = document.getElementById("searchInput").value;
+        const replaceInput = document.getElementById("replaceInput").value;
+
+        // we are storing on text include cell in array
+
+        const cells = document.querySelectorAll('[contenteditable="true"]');
+        
+        cells.forEach((cell)=> {
+            const text = cell.innerText;
+
+            if (text === searchInput) {
+                cell.innerText =  replaceInput;
+            }
+           
+        });
+    }
+
+    fnrBtn.addEventListener("click", searchAndReplace);
+
+
+
+
+
+// ///////////////////////////////////////////////////////
+
+// Add an event listener for your merge button
+const mergeButton = document.getElementById('merge');
 mergeButton.addEventListener('click', mergeSelectedCells);
 
-// Event listener for form change
-form.addEventListener('change', onChangeFormData);
+form.addEventListener("change", onChangeFormData)
 
-// Event listener for cell click
-document.addEventListener('click', handleCellClick);
-
-// Placeholder for onChangeFormData function
-function onChangeFormData(event) {
-    // Implement this function to handle form changes
-    // You might want to update defaultStyles based on the form values
-}
-
-// Handle cell click to track selected cells
-function handleCellClick(event) {
-    const cell = event.target;
-
-    // Check if the clicked element is a cell
-    if (cell.tagName === 'TD') {
-        const cellId = cell.id;
-
-        // Toggle selection
-        if (selectedCells.includes(cellId)) {
-            selectedCells = selectedCells.filter(id => id !== cellId);
-            cell.classList.remove('selected');
-        } else {
-            selectedCells.push(cellId);
-            cell.classList.add('selected');
-        }
-    }
-}
-
-// Get selected cells
-function getSelectedCells() {
-    return selectedCells;
-}
-
-// Validate the merge operation
-function isValidMerge(selectedCells) {
-    return selectedCells.length > 1;
-}
-
-// Update state after merging cells
-function updateStateForMergedCells(selectedCells) {
-    // Implement this function to update any application state related to merged cells
-    // Example: console.log('Cells merged:', selectedCells);
-}
-
-// Calculate colspan based on selected cells
-function calculateColSpan(selectedCells) {
-    const colIndices = selectedCells.map(cellId => parseInt(cellId.split('_')[1])); // Assuming cell IDs are like 'cell_1_2'
-    return Math.max(...colIndices) - Math.min(...colIndices) + 1;
-}
-
-// Calculate rowspan based on selected cells
-function calculateRowSpan(selectedCells) {
-    const rowIndices = selectedCells.map(cellId => parseInt(cellId.split('_')[2])); // Assuming cell IDs are like 'cell_1_2'
-    return Math.max(...rowIndices) - Math.min(...rowIndices) + 1;
-}
-
-// Perform the merge operation
+ 
 function performMerge(selectedCells) {
-    const firstCellId = selectedCells[0];
-    const firstCell = document.getElementById(firstCellId);
-    const colspan = calculateColSpan(selectedCells);
-    const rowspan = calculateRowSpan(selectedCells);
-
+    // Assume selectedCells is an array of cell IDs
+    const firstCell = document.getElementById(selectedCells[0]);
+    const colspan = calculateColSpan(selectedCells); // Implement this function
+    const rowspan = calculateRowSpan(selectedCells); // Implement this function
+ 
     firstCell.setAttribute('colspan', colspan);
     firstCell.setAttribute('rowspan', rowspan);
-
+ 
     // Hide or remove other cells
     selectedCells.slice(1).forEach(cellId => {
         const cell = document.getElementById(cellId);
         cell.style.display = 'none'; // or cell.remove();
     });
 }
-
-// Merge selected cells
+ 
 function mergeSelectedCells() {
+    // Get the selected cells
+    const selectedCells = getSelectedCells(); // Implement this function
+ 
     // Validate the selection
     if (!isValidMerge(selectedCells)) {
         alert("Invalid selection for merge");
         return;
     }
-
+ 
     // Merge the cells
     performMerge(selectedCells);
-
+ 
     // Update state
     updateStateForMergedCells(selectedCells);
-
-    // Clear selected cells
-    selectedCells.forEach(cellId => {
-        const cell = document.getElementById(cellId);
-        cell.classList.remove('selected');
-    });
-    selectedCells = [];
 }
 
-
-// // Add an event listener for your merge button
-// mergeButton.addEventListener('click', mergeSelectedCells);
-
-// form.addEventListener("change", onChangeFormData)
-
-// const defaultStyles ={
-//     //Todo: change it later
-//     fontFamily: "poppins-regular",
-//     fontSize: 16,
-//     isBold: false,
-//     isItalic: false,
-//     isUnderline: false,
-//     align: "left",
-//     textColor: "#00000",
-//     bgColor: "#ffffff",
-//     text: ""
-// }
- 
-// function performMerge(selectedCells) {
-//     // Assume selectedCells is an array of cell IDs
-//     const firstCell = document.getElementById(selectedCells[0]);
-//     const colspan = calculateColSpan(selectedCells); // Implement this function
-//     const rowspan = calculateRowSpan(selectedCells); // Implement this function
- 
-//     firstCell.setAttribute('colspan', colspan);
-//     firstCell.setAttribute('rowspan', rowspan);
- 
-//     // Hide or remove other cells
-//     selectedCells.slice(1).forEach(cellId => {
-//         const cell = document.getElementById(cellId);
-//         cell.style.display = 'none'; // or cell.remove();
-//     });
-// }
- 
-// function mergeSelectedCells() {
-//     // Get the selected cells
-//     const selectedCells = getSelectedCells(); // Implement this function
- 
-//     // Validate the selection
-//     if (!isValidMerge(selectedCells)) {
-//         alert("Invalid selection for merge");
-//         return;
-//     }
- 
-//     // Merge the cells
-//     performMerge(selectedCells);
- 
-//     // Update state
-//     updateStateForMergedCells(selectedCells);
-// }
+///////////////////////////////////////////////
+//////////////////////////////////////////////
 
 function onChangeCellText(event){
     let changedText = event.target.innerText;
